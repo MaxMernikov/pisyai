@@ -3,7 +3,7 @@ class CreateMembers < ActiveRecord::Migration
     create_table :members do |t|
       t.string :username
       t.integer :room_id
-      t.boolean :close, default: true
+      t.boolean :close, default: false
 
       t.timestamps
     end

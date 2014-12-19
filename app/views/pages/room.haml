@@ -1,3 +1,21 @@
-%p
-  Хуй вам а не булочки
+.container.main-pages
+  %header
+    = image_tag "logo.png", class: "logo img-responsive"
+  .col-md-6
+    %h2 Give this quartet a few
+    %p Gluten-free distillery fixie, selfies Austin church-key 3 wolf moon four dollar toast crucifix ennui pickled aesthetic Thundercats. Vinyl master cleanse +1 ennui. Polaroid kitsch quinoa Neutra. PBR meditation health goth Austin pug, lumbersexual taxidermy cronut crucifix butcher migas ugh. Occupy cray freegan readymade, flannel fingerstache YOLO tousled post-ironic
+  %br/
+  %br/
+  .col-md-6
+    .list-group
+      - @room_members.each do |member|
+        .list-group-item= member.username
 
+    - if @room_members.first.id == @member.id
+      %a.btn.btn-info.btn-block Начать игру
+    - else
+      %button.btn.btn-info.btn-block{ disabled: true } Ждем создателя комнаты
+    %br/
+    %span.btn.btn-warning.btn-block
+      Номер комнаты:
+      %span= @room.code
