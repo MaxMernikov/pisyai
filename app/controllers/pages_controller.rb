@@ -12,5 +12,14 @@ class PagesController < ApplicationController
   end
 
   def login_or_create_room
+    ap params
+    if params[:room].blank?
+      render text: 'window.location.replace("/sdfg");'
+    end
+  end
+
+  def room
+    ap params
+    render text: params
   end
 end

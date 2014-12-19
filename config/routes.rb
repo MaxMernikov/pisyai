@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     post :send_message
   end
 
+  get '/:id', to: 'pages#room'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

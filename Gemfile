@@ -42,3 +42,5 @@ gem 'redis'
 gem 'socket.io-rails'
 gem 'haml'
 gem 'sass'
+
+gem 'awesome_print'
