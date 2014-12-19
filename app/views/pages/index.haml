@@ -1,10 +1,11 @@
-%h1 Pisyai
-
-= form_tag pages_login_or_create_room_path, remote: true do
-  = text_field_tag :username, '', placeholder: 'your name', require: true
-  %br
-  = text_field_tag :room, '', placeholder: 'room code'
-  оставьте пустым если кода комнаты у вас нет
-  %br
-  = submit_tag 'run'
-
+.container.main-pages
+  %header
+    = image_tag "logo.png", class: "logo img-responsive"
+  %section.login-form
+    = form_tag pages_login_or_create_room_path, remote: true do
+      %label{:for => "login-name"} LOGIN
+      = text_field_tag :username, '', placeholder: 'your name', require: true, class: "form-control", name: "login-name"
+      %label{:for => "room-number"} ROOM NUMBER || оставьте пустым если кода комнаты у вас нет
+      = text_field_tag :room, '', placeholder: 'room code', class: "form-control", name: "room-number"
+      %br/
+      = submit_tag 'SUBMIT', class: "btn btn-info btn-block"

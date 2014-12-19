@@ -12,8 +12,9 @@ Rails.application.routes.draw do
     post :send_message
   end
 
+  get "/2-page" => "pages#2-page"
+  get "/3-page" => "pages#3-page"
   get '/:id', to: 'pages#room'
-
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
