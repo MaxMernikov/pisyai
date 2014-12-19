@@ -1,0 +1,12 @@
+.container.main-pages
+  %header
+    = image_tag "logo.png", class: "logo img-responsive"
+  %h3 Бабушка Сильвестера Сталлоне, Киндра Сталлоне воодушевившись по приезду в Америку страной, написала книжку “Как выбить дух из твоей ...”.
+  %br/
+  %br/
+  %br/
+  %form{:action => ""}
+    %label{:for => "answer"} your answer
+    = text_field_tag :answer, '', class: "form-control", name: "answer"
+    %br/
+    = submit_tag 'ПРИНЯТЬ ОТВЕТ', class: "btn btn-info btn-block"
