@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root 'pages#index'
   namespace 'pages' do
     post :login_or_create_room
-
     post :send_message
   end
 
