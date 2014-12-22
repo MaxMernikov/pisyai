@@ -18,8 +18,8 @@
 
 //= require socket.io
 
-// socket = io.connect("http://localhost:5001");
-socket = io.connect("36c44f99.ngrok.com");
+socket = io.connect("http://localhost:5001");
+// socket = io.connect("36c44f99.ngrok.com");
 
 socket.on("rt-change", function(message){
   $('dl.rt-change').append('<dt>'+ message.username + '</dt><dd>' + message.message +'</dd>')

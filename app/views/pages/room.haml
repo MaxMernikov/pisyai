@@ -1,10 +1,15 @@
+= render 'socket'
 .container.main-pages
   %header
     = link_to root_path do
       = image_tag "logo.png", class: "logo img-responsive"
+
   .col-md-6
-    %h2 Give this quartet a few
-    %p Gluten-free distillery fixie, selfies Austin church-key 3 wolf moon four dollar toast crucifix ennui pickled aesthetic Thundercats. Vinyl master cleanse +1 ennui. Polaroid kitsch quinoa Neutra. PBR meditation health goth Austin pug, lumbersexual taxidermy cronut crucifix butcher migas ugh. Occupy cray freegan readymade, flannel fingerstache YOLO tousled post-ironic
+    .hallway
+      %h2 Give this quartet a few
+      %p Gluten-free distillery fixie, selfies Austin church-key 3 wolf moon four dollar toast crucifix ennui pickled aesthetic Thundercats. Vinyl master cleanse +1 ennui. Polaroid kitsch quinoa Neutra. PBR meditation health goth Austin pug, lumbersexual taxidermy cronut crucifix butcher migas ugh. Occupy cray freegan readymade, flannel fingerstache YOLO tousled post-ironic
+    .room
+      %h2 Give this quartet a few
 
     %p
       Чат? Удобно если играешь в офисе или на паре
@@ -15,8 +20,8 @@
       = form_tag pages_send_message_path, remote: true, html: { class: 'form-horizontal', role: 'form' } do
         .form-group
           .col-md-12
-            .well
-              %b Тебя зовут #{@member.username}? Это шутка? Да так звали мою бабулю!
+            .well.js-messages
+              %b Тебя зовут #{@member.username}? Это шутка? Да так звали мою бабулю! (придумать еще десяток шуточных фраз)
               %hr
               - @messages.split('<br>').each do |message|
                 %p= message
@@ -28,12 +33,12 @@
   %br/
   %br/
   .col-md-6
-    .list-group
+    .list-group.js-join_in
       - @room_members.each do |member|
         .list-group-item= member.username
 
     - if @room_members.first.id == @member.id
-      %a.btn.btn-info.btn-block Начать игру
+      = link_to 'Начать игру', pages_start_game_path, class: 'btn btn-info btn-block', remote: true
     - else
       %button.btn.btn-info.btn-block{ disabled: true } Ждем начала игры
     %br/

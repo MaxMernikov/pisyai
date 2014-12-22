@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace 'pages' do
     post :login_or_create_room
     post :send_message
+    get :start_game
   end
 
   get "/2-page" => "pages#2-page"

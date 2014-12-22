@@ -1,0 +1,5 @@
+<script>
+  socket.on('<%=@room.code %>', function (data) {
+    window[data['key']].apply(null, [data['val']]);
+  });
+</script>
