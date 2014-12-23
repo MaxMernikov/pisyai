@@ -27,4 +27,8 @@ $(document).ready(function(){
 		  $(this).addClass('slide-up')
 		}
 	});
+	$('.room-number').zclip({
+      path:'/javascripts/ZeroClipboard.swf',
+      copy:$('.room-number span').text()
+    });
 });
