@@ -11,19 +11,20 @@ function start_game(val){
   $('.hallway, .welcome-page').hide();
   $('.room').show();
 }
-
-$('.form-horizontal .btn').on('click', function(){
-    var well = $('.well.js-messages');
-    var height = well[0].scrollHeight + 20;
-    well.scrollTop(height);
-  });
-  $('.chat p a').on('click', function(){
-    if ($(this).hasClass('slide-up')) {
-      $('.form-horizontal').slideDown();
-      $(this).removeClass('slide-up');
-    }
-    else {
-      $('.form-horizontal').slideUp();
-      $(this).addClass('slide-up')
-    }
-  });
+$(document).ready(function(){
+	$('.form-horizontal .btn').on('click', function(){
+	    var well = $('.well.js-messages');
+	    var height = well[0].scrollHeight + 20;
+	    well.scrollTop(height);
+	  });
+	$('.chat p a').on('click', function(){
+		if ($(this).hasClass('slide-up')) {
+		  $('.form-horizontal').slideDown();
+		  $(this).removeClass('slide-up');
+		}
+		else {
+		  $('.form-horizontal').slideUp();
+		  $(this).addClass('slide-up')
+		}
+	});
+});
