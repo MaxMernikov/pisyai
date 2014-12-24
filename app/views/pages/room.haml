@@ -4,8 +4,14 @@
     = link_to root_path do
       = image_tag "logo.png", class: "logo img-responsive"
 
-  .room
+  .room.answer
     %h2 Give this quartet a few
+    %form{:action => ""}
+      = text_field_tag :answer, '', placeholder: 'Соврите', class: 'form-control'
+      %br/
+      = submit_tag 'Отправить ложь', class: "btn btn-info btn-block col-md-2"
+
+  .room.choose-answer
     %form{:action => ""}
       .col-md-12
         .row.answer-radio

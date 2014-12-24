@@ -9,8 +9,9 @@ function join_in_room(val){
 function start_game(val){
   $('.room h2').text(val['question']);
   $('.hallway, .welcome-page').hide();
-  $('.room').show();
+  $('.room.answer').show();
 }
+
 $(document).ready(function(){
 	$('.form-horizontal .btn').on('click', function(){
 	    var well = $('.well.js-messages');
