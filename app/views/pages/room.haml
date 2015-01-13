@@ -10,8 +10,15 @@
       = text_field_tag :answer, '', placeholder: 'Соврите', class: 'form-control'
       %br/
       = submit_tag 'Отправить ложь', class: "btn btn-info btn-block col-md-2"
+    .clear
+    %br/
+    %br/
+    .col-md-12
+      .progress.progress-striped.active
+        .progress-bar.progres-bar-warning#progress
 
   .room.choose-answer
+    %h2
     %form{:action => ""}
       .col-md-12
         .row.answer-radio
