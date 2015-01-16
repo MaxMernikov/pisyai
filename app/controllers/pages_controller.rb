@@ -40,7 +40,7 @@ class PagesController < ApplicationController
   def send_message
     $redis.append "#{@game_credentials['room']}_messages", "#{@game_credentials['username']}: #{params['message']}<br>"
 
-    $redis.publish @game_credentials['room'], { key: 'send_message', val: {username: @game_credentials['username'], message: params['message'] } }.to_json
+    $redis.publish @game_credentials['room'], { key: 'new_message', val: {username: @game_credentials['username'], message: params['message'] } }.to_json
 
     render text: "$('input[name=\"message\"]').val('')" 
   end

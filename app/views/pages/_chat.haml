@@ -1,0 +1,20 @@
+.col-md-3.chat-container
+  .chat
+    %p
+      Чат? Удобно если играешь в офисе или на паре
+      %a.caret
+    = form_tag pages_send_message_path, remote: true, class: 'form-horizontal', html: { class: 'form-horizontal', role: 'form' } do
+      .form-group
+        .col-md-12
+          .well.js-messages
+            %b Тебя зовут #{@member.username}? Это шутка? Да так звали мою бабулю! (придумать еще десяток шуточных фраз)
+            %hr
+            .cha{'ng-repeat' => 'message in chatMessages'}
+              %p {{message.username}}: {{message.message}}
+            / - @messages.split('<br>').each do |message|
+            /   %p= message
+
+        .col-md-7
+          = text_field_tag :message, '', placeholder: 'время говорить', class: 'form-control'
+        .col-md-5
+          = submit_tag 'Отправить', class: "btn btn-info btn-block col-md-2"
