@@ -33,6 +33,9 @@ html
   position: absolute
   top: 5px
   right: 15px
+.chat-container
+  position: fixed
+  top: 0
 .chat 
   background-color: #f6bb42
   border-color: #f6bb42
@@ -41,9 +44,12 @@ html
   p
     color: #000
   .caret
-    width: 8px
+    width: 15px
     margin-left: 16px
     cursor: pointer
+    border-top: 8px solid
+    border-right: 8px solid transparent
+    border-left: 8px solid transparent
 .room-number.hover
   color: #fff
   background-color: #ffce54
