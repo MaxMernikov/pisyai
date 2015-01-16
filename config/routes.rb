@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     get :start_game
   end
 
+  resources :api, only: []  do
+    get 'all_messages'
+  end
+
   get "/2-page" => "pages#2-page"
   get "/3-page" => "pages#3-page"
   get '/:id', to: 'pages#room'
