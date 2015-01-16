@@ -4,20 +4,72 @@
     = link_to root_path do
       = image_tag "logo.png", class: "logo img-responsive"
 
-  .col-md-6
-    .hallway-status
-      %h2 Give this quartet a few
-      %p Gluten-free distillery fixie, selfies Austin church-key 3 wolf moon four dollar toast crucifix ennui pickled aesthetic Thundercats. Vinyl master cleanse +1 ennui. Polaroid kitsch quinoa Neutra. PBR meditation health goth Austin pug, lumbersexual taxidermy cronut crucifix butcher migas ugh. Occupy cray freegan readymade, flannel fingerstache YOLO tousled post-ironic
-    .room
-      %h2 Give this quartet a few
+  .room.answer
+    %h2 Give this quartet a few
+    %form{:action => ""}
+      = text_field_tag :answer, '', placeholder: 'Соврите', class: 'form-control'
+      %br/
+      = submit_tag 'Отправить ложь', class: "btn btn-info btn-block col-md-2"
 
-    %p
-      Чат? Удобно если играешь в офисе или на паре
-    
+  .room.choose-answer
+    %form{:action => ""}
+      .col-md-12
+        .row.answer-radio
+          .col-md-6
+            .radio
+              .iradio_flat{:style => "position: relative;"}
+                %input#flat-radio-1{:type => "radio", :name => 'group'}/
+                %ins.iCheck-helper
+              %label{:for => "flat-radio-1"} default
+          .col-md-6
+            .radio
+              .iradio_flat
+                %input#flat-radio-2{:type => "radio", :name => 'group'}/
+                %ins.iCheck-helper
+              %label{:for => "flat-radio-2"} checked
+        .row.answer-radio
+          .col-md-6
+            .radio
+              .iradio_flat
+                %input#flat-radio-3{:type => "radio", :name => 'group'}/
+                %ins.iCheck-helper
+              %label{:for => "flat-radio-3"} disabled
+          .col-md-6
+            .radio
+              .iradio_flat
+                %input#flat-radio-4{:type => "radio", :name => 'group'}/
+                %ins.iCheck-helper
+              %label{:for => "flat-radio-4"} checked & disabled
+        .row
+          = submit_tag 'Принять ответ', class: "btn btn-info btn-block col-md-6", style: "margin-bottom: 40px"
+  .welcome-page
+    .col-md-6
+      .hallway
+        %h2 Give this quartet a few
+        %p Gluten-free distillery fixie, selfies Austin church-key 3 wolf moon four dollar toast crucifix ennui pickled aesthetic Thundercats. Vinyl master cleanse +1 ennui. Polaroid kitsch quinoa Neutra. PBR meditation health goth Austin pug, lumbersexual taxidermy cronut crucifix butcher migas ugh. Occupy cray freegan readymade, flannel fingerstache YOLO tousled post-ironic
 
+    %br/
+    %br/
+    .col-md-6
+      .list-group.js-join_in
+        - @room_members.each do |member|
+          .list-group-item= member.username
 
-    .row
-      = form_tag pages_send_message_path, remote: true, html: { class: 'form-horizontal', role: 'form' } do
+      - if @room_members.first.id == @member.id
+        = link_to 'Начать игру', pages_start_game_path, class: 'btn btn-info btn-block', remote: true
+      - else
+        %button.btn.btn-info.btn-block{ disabled: true } Ждем начала игры
+      %br/
+      %span.btn.btn-warning.btn-block.room-number
+        Номер комнаты:
+        %span= @room.code
+  .clear
+  .col-md-4
+    .chat
+      %p
+        Чат? Удобно если играешь в офисе или на паре
+        %a.caret
+      = form_tag pages_send_message_path, remote: true, class: 'form-horizontal', html: { class: 'form-horizontal', role: 'form' } do
         .form-group
           .col-md-12
             .well.js-messages
@@ -26,22 +78,8 @@
               - @messages.split('<br>').each do |message|
                 %p= message
 
-          .col-md-9
+          .col-md-7
             = text_field_tag :message, '', placeholder: 'время говорить', class: 'form-control'
-          .col-md-3
+          .col-md-5
             = submit_tag 'Отправить', class: "btn btn-info btn-block col-md-2"
-  %br/
-  %br/
-  .col-md-6
-    .list-group.js-join_in
-      - @room_members.each do |member|
-        .list-group-item= member.username
 
-    - if @room_members.first.id == @member.id
-      = link_to 'Начать игру', pages_start_game_path, class: 'btn btn-info btn-block', remote: true
-    - else
-      %button.btn.btn-info.btn-block{ disabled: true } Ждем начала игры
-    %br/
-    %span.btn.btn-warning.btn-block
-      Номер комнаты:
-      %span= @room.code
